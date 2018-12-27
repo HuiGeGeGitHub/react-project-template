@@ -5,4 +5,4 @@ const Tables = (props) => {
         <Table columns={props.columns} dataSource={props.dataSource} />
     )
 }
-export default Tables;
+export default Tables; 
