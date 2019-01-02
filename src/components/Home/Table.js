@@ -46,14 +46,14 @@ class TableCom extends Component {
         this.state = {};
     }
     static propTypes = {
-        columns: PropTypes.array
+        list: PropTypes.array
     }
     render() {
-        console.log(this.props.columns)
+        console.log(this.props)
         return (
             <div className="page page-home">
                 {/* <Table columns={columns} dataSource={data}/> */}
-                <Table columns={columns}/>
+                <Table columns={columns} dataSource={this.props.list} />
             </div>
         );
     }

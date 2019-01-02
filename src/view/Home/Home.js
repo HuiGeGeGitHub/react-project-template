@@ -2,6 +2,7 @@ import React,{ Component } from "react";
 import PropTypes from 'prop-types';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+import { getlist } from "../../redux/Home/action"
 import TableCom from "../../components/Home/Table";
 class HomeView extends Component {
     constructor(props) {
@@ -9,22 +10,25 @@ class HomeView extends Component {
         this.state = {};
     }
     static propTypes = {
-        title: PropTypes.string
+        tableList: PropTypes.any,
+        getlist: PropTypes.func.isRequired,
+    }
+    componentDidMount() {
+        this.props.getlist();
     }
     render() {
+        console.log(this.props)
         return (
             <div className="page page-home">
-                <TableCom />
+                <TableCom list={this.props.tableList.data} />
             </div>
         );
     }
 }
-const mapStateToProps = state => {
-    console.log(state)
+export default connect(state => {
     return {
-        list: []
+        tableList: state.tableList
     }
-};
-export default connect(
-    mapStateToProps
-)(HomeView);
+},{
+    getlist
+})(HomeView);
