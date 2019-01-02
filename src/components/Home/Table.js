@@ -49,7 +49,6 @@ class TableCom extends Component {
         list: PropTypes.array
     }
     render() {
-        console.log(this.props)
         return (
             <div className="page page-home">
                 {/* <Table columns={columns} dataSource={data}/> */}
