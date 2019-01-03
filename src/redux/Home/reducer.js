@@ -1,8 +1,10 @@
 const initState = {
-    data: []
+    data: [],
+    imgsrc: ''
 };
 
 export const tableList = (state = initState, action) => {
+    console.log(action)
     switch(action.type) {
         case "LOAD_DATA":
             let obj = {
@@ -10,6 +12,11 @@ export const tableList = (state = initState, action) => {
                 data: action.dataList
             }
             return obj
+        case "SET_IMG_SRC": 
+            return {
+                ...state,
+                imgsrc: action.src
+            }
         default: 
             return state;
     }

@@ -11,3 +11,19 @@ export const axios = (config) => {
         })
     })
 }
+export function buffertoArrayBuffer(array) {
+    var length = array.length < 0 ? 0 : array.length
+    var buf = new Uint8Array(length)
+    for (var i = 0; i < length; i += 1) {
+      buf[i] = array[i] & 255
+    }
+    return buf
+}
+export function ArrayBuffertoBuffer(ab) {
+    var buf = new Buffer(ab.byteLength);
+    var view = new Uint8Array(ab);
+    for (var i = 0; i < buf.length; ++i) {
+        buf[i] = view[i];
+    }
+    return buf;
+}
