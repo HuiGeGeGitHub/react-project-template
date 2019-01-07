@@ -4,7 +4,7 @@ const initState = {
 };
 
 export const tableList = (state = initState, action) => {
-    console.log(action)
+    // console.log(action)
     switch(action.type) {
         case "LOAD_DATA":
             let obj = {

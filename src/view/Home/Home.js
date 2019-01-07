@@ -33,7 +33,6 @@ class HomeView extends Component {
         this.props.getimgAction(this.state.formdata)
     }
     render() {
-        console.log(this.props)
         return (
             <div className="page page-home">
                 <TableCom list={this.props.tableList.data} />
@@ -44,7 +43,6 @@ class HomeView extends Component {
     }
 }
 export default connect(state => {
-    console.log(state)
     let { tableList } = state;
     return {
         tableList
