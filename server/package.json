@@ -9,6 +9,7 @@
   "author": "zyh",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "koa": "^2.6.2",
     "koa-cors": "0.0.16",
     "koa-router": "^7.4.0",

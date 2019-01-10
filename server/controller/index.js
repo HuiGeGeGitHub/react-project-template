@@ -1,25 +1,22 @@
+let axios = require("axios");
 module.exports = {
-    "list": async (ctx, next) => {
-        let data = [{
-                key: '1',
-                name: 'John Brown',
-                age: 32,
-                address: 'New York No. 1 Lake Park',
-                tags: ['nice', 'developer'],
-            }, {
-                key: '2',
-                name: 'Jim Green',
-                age: 42,
-                address: 'London No. 1 Lake Park',
-                tags: ['loser'],
-            }, {
-                key: '3',
-                name: 'Joe Black',
-                age: 32,
-                address: 'Sidney No. 1 Lake Park',
-                tags: ['cool', 'teacher'],
-        }]
-        ctx.response.body = data;
+    list: async (ctx, next) => {
+        let { query } = ctx.request,
+            url = "movieOnInfoList",
+            params = {
+                token: '',
+            }
+        // if(query.page !== "0") {
+        //     url = "moreComingList";
+        //     params.movieIds = encodeURIComponent(query.movieIds)
+        // }
+        console.log(query, url);
+        let p = await axios({
+            method: "get",
+            url: `http://m.maoyan.com/ajax/${url}`,
+            params
+        })
+        ctx.response.body = p.data;
         ctx.response.status = 200;
     }
 };
