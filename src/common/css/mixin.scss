@@ -1,0 +1,19 @@
+$activeColor: #ff4d64;
+//渐变混合
+@mixin linear($direct,$color1,$color2){
+    background: $color1;
+    background: -webkit-linear-gradient($direct, $color1, $color2);
+    background: -o-linear-gradient($direct,$color1, $color2);
+    background: -moz-linear-gradient($direct, $color1, $color2);
+    background: linear-gradient($direct,$color1, $color2); 
+}
+@mixin bg_size($url){
+    background-image: url($url);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+@mixin ellipse() {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

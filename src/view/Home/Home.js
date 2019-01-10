@@ -1,9 +1,11 @@
 import React,{ Component } from "react";
 import PropTypes from 'prop-types';
-import { bindActionCreators } from "redux";
+import { MemoryRouter, Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
-import { getlist } from "../../redux/Home/action"
-import TableCom from "../../components/Home/Table";
+import { getlist, setHeader } from "../../redux/Home/action"
+import HeaderBar from "Components/Home/HeaderBar/HeaderBar";
+import CurrentList from "./CurrentList/CurrentList"
+import NextList from "./NextList/NextList"
 class HomeView extends Component {
     constructor(props) {
         super(props);
@@ -11,24 +13,31 @@ class HomeView extends Component {
     }
     static propTypes = {
         tableList: PropTypes.any,
-        getlist: PropTypes.func.isRequired,
     }
     componentDidMount() {
-        this.props.getlist();
+        console.log(this.props)
+    }
+    componentWillReceiveProps() {
+        console.log(this.props)
     }
     render() {
-        console.log(this.props)
         return (
             <div className="page page-home">
-                <TableCom list={this.props.tableList.data} />
+                <HeaderBar headerData={this.props.headerData} setHeader={this.props.setHeader}></HeaderBar>
+                <Switch>
+                    <Route exact path="/" component={ CurrentList }></Route>
+                    <Route path="/home_next" component={ NextList }></Route>
+                </Switch>
             </div>
         );
     }
 }
 export default connect(state => {
     return {
-        tableList: state.tableList
+        tableList: state.store.lisData,
+        headerData: state.store.headerData
     }
 },{
+    setHeader,
     getlist
 })(HomeView);

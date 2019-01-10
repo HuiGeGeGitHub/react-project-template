@@ -10,7 +10,13 @@ export const getlist = () => {
         })
         dispatch({
             type: "LOAD_DATA",
-            dataList: list
+            dataList: list.movieList
         });
+    }
+}
+export const setHeader = (headerData) => {
+    return {
+        type: 'HEADER_DATA',
+        headerData
     }
 }

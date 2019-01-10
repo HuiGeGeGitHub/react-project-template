@@ -1,15 +1,34 @@
 const initState = {
-    data: []
+    lisData: [],
+    headerData: {
+        city: "杭州",
+        list: [
+            {
+                title: "正在热映",
+                type: 0,
+            },
+            {
+                title: "即将上映",
+                type: 1,
+            }
+        ],
+        current: 0,
+    }
 };
 
-export const tableList = (state = initState, action) => {
+export const store = (state = initState, action) => {
     switch(action.type) {
         case "LOAD_DATA":
             let obj = {
                 ...state,
-                data: action.dataList
+                lisData: action.dataList
             }
-            return obj
+            return obj;
+        case "HEADER_DATA":
+            return {
+                ...state,
+                headerData: action.headerData
+            } 
         default: 
             return state;
     }

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Provider } from "react-redux";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import store from "./redux/store";
 import Home from './view/Home/Home'
-import "./App.css";
+import "./App.scss";
 
 class App extends Component {
     render() {
@@ -12,6 +12,7 @@ class App extends Component {
                 <BrowserRouter>
                     <div>
                         <Route path="/" component={ Home }></Route>
+                        {/* <Redirect to="/" /> */}
                     </div>
                 </BrowserRouter>
             </Provider>
