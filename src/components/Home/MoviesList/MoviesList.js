@@ -52,7 +52,8 @@ export default class Movies extends React.Component {
     }
     static rData = []
     componentDidMount() {
-        setTimeout(async () => {     
+        setTimeout(async () => {   
+            console.log(this)  
             let arr = await genData();   
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows({...this.rData,...arr}),
@@ -92,7 +93,7 @@ export default class Movies extends React.Component {
         // let index = data.length - 1;
         const row = (rowData, sectionID, rowID) => {
             const obj = data[rowID];
-            console.log(obj)
+            // console.log(obj)
             return (
                 <div
                     key={rowID}
@@ -171,12 +172,6 @@ export default class Movies extends React.Component {
                     renderRow={row}
                     renderSeparator={separator}
                     useBodyScroll
-                    // pullToRefresh={
-                        // <PullToRefresh
-                            // refreshing={this.state.refreshing}
-                            // onRefresh={this.onRefresh}
-                    //     />
-                    // }
                     onEndReached={this.onEndReached}
                     pageSize={3}
                 />
