@@ -46,15 +46,16 @@ class TableCom extends Component {
         this.state = {};
     }
     static propTypes = {
-        list: PropTypes.array
+        list: PropTypes.any
     }
     render() {
+        console.log(this.props.list)
         return (
             <div className="page page-home">
                 {/* <Table columns={columns} dataSource={data}/> */}
-                <Table columns={columns} dataSource={this.props.list} />
+                <Table columns={columns} dataSource={this.props.list.movieList} />
             </div>
         );
     }
 }
-export default TableCom; 
+export default TableCom;
