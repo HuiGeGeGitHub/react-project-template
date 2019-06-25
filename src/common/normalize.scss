@@ -1,0 +1,92 @@
+html, body, div, span, applet, object, iframe, table, caption,
+tbody, tfoot, thead, tr, th, td, del, dfn, em, font, img, ins,
+kbd, q, s, samp, small, strike, section, strong, sub, sup, tt, var,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr,
+acronym, address, big, cite, code, dl, dt, dd, ol, ul, li,
+fieldset, form, label,i,b, legend,input,button {
+    vertical-align: baseline;
+    font-family: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    outline: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    // user-select:none;
+}
+:focus {outline:none;} /*for IE*/
+::-moz-focus-inner {border-color: transparent;} /*for mozilla*/
+
+input::-moz-focus-inner,button::-moz-focus-inner {
+    border: 0;
+}
+body {
+    background: white;
+    line-height: 1;
+    color: #666;
+    font: 14px/1.5 "PingFangSC-Regular","Microsoft Yahei","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+}
+html,body{
+    height: 100%;
+    scroll-behavior:smooth;
+}
+ol, ul {
+    list-style: none;
+}
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+caption, th, td {
+    font-weight: normal;
+    text-align: left;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+    content: “”;
+}
+blockquote, q {
+    quotes: “” “”;
+}
+img {
+    border: none;
+}
+a {
+    text-decoration: none;
+    color: #666;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #919090;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #919090;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #919090;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+   color:    #919090;
+}
+ ::-ms-clear, ::-ms-reveal{display: none;}
+
+input{
+    -webkit-appearance: none;
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+.cl_both {
+    zoom: 1;
+}
+/*==for IE6/7 Maxthon2==*/
+.cl_both:after {
+    clear: both;
+    content: '.';
+    display: block;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}

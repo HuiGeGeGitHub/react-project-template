@@ -1,0 +1,1 @@
+export const SET_DRAFT = 'SET_DRAFT'

@@ -1,0 +1,59 @@
+$mainColor: #1890FF;
+$borderWidth: 4px;
+@mixin flex_c {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin flex_start {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
+@mixin flex_fn($type) {
+    display: flex;
+    justify-content: $type;
+    align-items: center;
+}
+@mixin scrollBar($height, $thumbColor, $trackColor, $hoverColor: rgb(209, 206, 206)) {
+    &::-webkit-scrollbar {/*滚动条整体样式*/
+        width: $height;
+        height: $height;
+    }
+    &::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+        border-radius: $height;
+        box-shadow: inset 0 0 8px rgba(0,0,0,0.2);
+        background: $thumbColor;
+        cursor: pointer;
+        &:hover{
+            background: $hoverColor;
+        }
+    }
+    &::-webkit-scrollbar-track {/*滚动条里面轨道*/
+        // box-shadow: inset 0 0 2px rgba(0,0,0,0.2);
+        // border-radius: 10px;
+        background: $trackColor;
+    }
+}
+@mixin overhideMuti($count) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-box;
+    -webkit-line-clamp: $count;
+    -moz-line-clamp: $count;
+    -ms-line-clamp: $count;
+    /* autoprefixer: off */ 
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -ms-box-orient: vertical;
+    /* autoprefixer: on */
+    word-wrap: break-word;
+    word-break: break-all;
+}
+@mixin overhideOne() {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
