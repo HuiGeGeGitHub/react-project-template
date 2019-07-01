@@ -1,0 +1,13 @@
+@import "../../../common/mixin";
+.ant-layout-sider{
+    position: "fixed";
+    top: 0;
+    left: 0;
+    z-index: 5;
+    section.logo{
+        width: 149px;
+        height: 35px;
+        margin: 14px auto 30px 24px;
+        background: url('./images/logo.png') center center/cover no-repeat;
+    }
+}

@@ -1,0 +1,59 @@
+$activeColor: rgb(24, 144, 255);
+.custom-theme{
+    width: 100%;
+    height: 65px ;
+    background-color: #fff;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    .flex{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .userInfo{
+        height: 45px;
+        line-height: 45px;
+        margin-left: 20px;
+        cursor: pointer;
+        img{
+            width: 45px;
+            height: 100%;
+            margin-right: 12px;
+            border-radius: 5px;
+        }
+        img, p{
+            display: inline-block;
+            vertical-align: middle;
+        }
+        p{
+            max-width: 6em;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+    }
+}
+.ant-popover-inner-content{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.customPopover{
+    width: 8em;
+    li{
+        width: 100%;
+        height: 2em;
+        line-height: 2em;
+        cursor: pointer;
+        i{
+            margin-right: 1em;
+        }
+        &:hover{
+            color: $activeColor;
+        }
+    }
+}

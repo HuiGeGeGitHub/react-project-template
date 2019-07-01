@@ -2,47 +2,92 @@ import React, { Component } from 'react';
 import { Redirect, Route, Switch } from "react-router-dom";
 import NotFound from '../view/NotFound/NotFound'
 import routesConfig from "../router/config"
+import ManageSkeleton from '../components/Global/ManageSkeleton/ManageSkeleton';
 // const createBrowserHistory = require('history').createBrowserHistory
+const ParentWrapComMap = {
+    ManageSkeleton
+}
 class RouteConfig extends Component{
     componentWillReceiveProps(nexProps) {
         console.log(this.props, nexProps)
     }
     render() {
         return (
-            // <BrowserRouter>  {/* 上一级已经有全局Router了  */}
-            //  <Router history={createBrowserHistory()}>  
             <div className="App">
                 <Switch>
-                    <Route exact path="/" render={() => <Redirect to="/app" push />}></Route>
-                    <Route path="/app" component={MainComp} />
-                    <Route component={NotFound} />
+                    <Route exact path="/" render={() => <Redirect to="/manage/solution" push />}></Route>
+                    <MainComp />
+                    {/* <Route component={NotFound}></Route> */}
                 </Switch>
             </div>
-            // </Router>
         )
     }
 }
-
-function MainComp() {
-    return (
-        Object.keys(routesConfig).map(key => 
+function MainComp(): any {
+    return Object.keys(routesConfig).map(key => 
             routesConfig[key].map(r => {
-                const route = r => {
+                if(r.component) {
                     return (
                         <Route
-                            key={r.route || r.key}
-                            exact
-                            path={r.route || r.key}
+                            key={r.route}
+                            path={r.route}
                             render={
                                 (props) => renderRoute(props, r)
                             }
                         />
                     )
+                }else if(r.children) { // 有子页面
+                    if(r.parentWrapCom) {
+                        const ParentWrapCom: any = ParentWrapComMap[r.parentWrapCom]
+                        return (
+                            <Route
+                                key={r.route}
+                                path={r.route}
+                                render={() => {
+                                    let parentFix = r.route === '/' ? '' : r.route
+                                    return (
+                                        r.children.map(v =>
+                                            <Route
+                                                path={parentFix + v.route}
+                                                key={parentFix + v.route}
+                                                render={
+                                                    (props) => <ParentWrapCom>
+                                                        {
+                                                            renderRoute(props, v)
+                                                        }
+                                                    </ParentWrapCom>    
+                                                }
+                                            ></Route>
+                                        )
+                                    )
+                                }}
+                            />
+                        )
+                    }else {
+                        return (
+                            <Route
+                                key={r.route}
+                                path={r.route}
+                                render={() => {
+                                    let parentFix = r.route === '/' ? '' : r.route
+                                    return (
+                                        r.children.map(v =>
+                                            <Route
+                                                path={parentFix + v.route}
+                                                key={parentFix + v.route}
+                                                render={
+                                                    (props) => renderRoute(props, v)
+                                                }
+                                            ></Route>
+                                        )
+                                    )
+                                }}
+                            />
+                        )
+                    }
                 }
-                return route(r)
             })
         )
-    )
 }
 function renderRoute(props, r) {
     let Component = r.component,
@@ -52,6 +97,6 @@ function renderRoute(props, r) {
         // return <Redirect to="/login" push /> 
         // 去登录
     }
-    return <Component ></Component>
+    return <Component {...props}></Component>
 }
 export default RouteConfig
