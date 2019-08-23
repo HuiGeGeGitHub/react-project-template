@@ -1,0 +1,20 @@
+@import './common/normalize';
+html{
+    font-size: 50px;
+}
+#root{
+    height: 100%;
+    .App {
+        height: 100%;
+        text-align: left;
+    }
+}
+.myBtn{
+    user-select: none;
+}
+*::-webkit-media-controls {
+    display:none !important;
+}
+*::-webkit-media-controls-enclosure {
+    display:none !important;
+  }
