@@ -22,14 +22,14 @@ function Content(props) {
 function HeaderBar(props) {
     return (
         <Layout.Header className="custom-theme">
-                <div className="flex">
-                    <Popover placement="bottom" content={Content(props)}>
-                        <div className="userInfo">
-                            <img src={defaultIcon} alt="用户头像" />
-                            <p>{props.user.account || '未设置名称'}</p>
-                        </div>
-                    </Popover>
-                </div>
+            <div className="flex">
+                <Popover placement="bottom" content={Content(props)}>
+                    <div className="userInfo">
+                        <img src={defaultIcon} alt="用户头像" />
+                        <p>{props.user.account || '未设置名称'}</p>
+                    </div>
+                </Popover>
+            </div>
         </Layout.Header>
     );
 }

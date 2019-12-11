@@ -7,13 +7,11 @@ export interface LoginProps {
     setDraft: Function;
 }
 const WrappedNormalLoginForm: any = Form.create({ name: 'normal_login' })(NormalLoginForm);
-const LOGO = require("./images/logo.png");
 const Login = memo(function Login(props: LoginProps) {
     return (
         <div className="loginWrap">
             <div className="loginForm">
-                <img className="logo" src={LOGO} alt="相芯科技logo" />
-                <p className="title">STA 后台小助手登录</p>
+                <p className="title">AI虚拟主播后台管理系统</p>
                 <section className="inputWrap">
                     <WrappedNormalLoginForm {...props} />
                 </section>

@@ -1,4 +1,5 @@
 import Axios from "axios";
+import { message } from "antd";
 export const axios = config => {
     let configCom = {
         method: config.method || "post",
@@ -21,6 +22,25 @@ export const axios = config => {
         });
     });
 };
+export const httpReq = async (config, setLoadding = null) => {
+    setLoadding && setLoadding(true);
+    try {
+        var res: any = await axios(config);
+        let timer = setTimeout(() => {
+            clearTimeout(timer)
+            setLoadding && setLoadding(false);
+        }, 500)
+        if (res && res.data && res.data.code === 2) {
+            return Promise.resolve(res.data)
+        } else if(res) {
+            message.error(res && res.data ? res.data.message : "出错咯~");
+            return Promise.reject(res.data)
+        }
+    } catch (err) {
+        message.error("网络请求出错~");
+        return Promise.reject(err)
+    }
+}
 export function buffertoArrayBuffer(array) {
     var length = array.length < 0 ? 0 : array.length;
     var buf = new Uint8Array(length);
@@ -50,25 +70,19 @@ export function dataURItoBlob(dataURI) {
    }
    return new Blob([intArray], {type: mimeString});
 }
-export const formatTime = date => {
-    if (typeof date == "number") {
-        date = new Date(date);
-    }
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const hour = date.getHours();
-    const minute = date.getMinutes();
-    const second = date.getSeconds();
+export const formatTime = (date, type = 'yy-mm-dd hh:ee:ss') => {
+    date = new Date(date);
     const formatNumber = n => {
         n = n.toString();
         return n[1] ? n : "0" + n;
     };
-    return (
-        [year, month, day].map(formatNumber).join("-") +
-        " " +
-        [hour, minute, second].map(formatNumber).join(":")
-    );
+    const year = formatNumber(date.getFullYear());
+    const month = formatNumber(date.getMonth() + 1);
+    const day = formatNumber(date.getDate());
+    const hour = formatNumber(date.getHours());
+    const minute = formatNumber(date.getMinutes());
+    const second = formatNumber(date.getSeconds());
+    return type.replace('yy', year).replace('mm', month).replace('dd', day).replace('hh', hour).replace('ee', minute).replace('ss', second);
 };
 
 /**
@@ -356,4 +370,14 @@ export function deepCopy(obj1) {
         }
     }
     return obj2;
+}
+
+/**
+ * 
+ * @param str 要筛选空格的字符串
+ */
+export function deleteWhiteHanlde (str) {
+    return function (cb) {
+        cb(str.replace(/\s/g, ''))
+    }
 }

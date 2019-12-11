@@ -1,26 +1,30 @@
-import React, { memo} from "react";
+import React, { memo, useState} from "react";
 import { Layout, Menu, Icon } from "antd";
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
 import RouterConfig from '../../../router/config'
 import HeaderCustom from '../HeaderCustom/HeaderCustom'
 import './ManageSkeleton.scss'
-const { Content, Sider } = Layout;
+const { Sider } = Layout;
 const { menus } = RouterConfig
 function ManageSkeleton(props) {
     const asideWidth = 256;
+    let [collapsed, setcollapsed] = useState(false)
     return (
         <Layout style={{height: '100%',}}>
             <Sider 
                 trigger={null}
                 collapsible
                 width={asideWidth}
-                // collapsed={ collapsed }
+                collapsed={ collapsed }
             >
                 <section className="logo"></section>
                 <SiderCustom {...props} />
+                <span className="collapsedBtn" onClick={() => setcollapsed(!collapsed)}>
+                    <Icon type={collapsed ? 'menu-unfold' : 'menu-fold'} />
+                </span>
             </Sider>
-            <Layout>
+            <Layout className="contentWrap">
                 <HeaderCustom />
                 {
                     props.children
