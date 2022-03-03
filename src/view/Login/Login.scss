@@ -1,42 +1,43 @@
-@import '../../common/mixin';
-$bgColor: #F0F2F5;
+@import "../../common/mixin";
+$bgColor: #f0f2f5;
 $width: 480px;
-.loginWrap{
+.loginWrap {
     width: 100%;
     height: 100%;
-    background-color: $bgColor;
-    background-image: url('./images/img-login.png');
+    background-image: url("./images/img-login.png");
     background-repeat: no-repeat;
     background-size: $width 100%;
     background-position: right top;
-    .loginForm{
+    .loginForm {
         width: 100%;
         height: 100%;
         min-width: $width * 2;
         padding-right: $width;
         @include flex_c();
         flex-direction: column;
-        .logo{
+        .logo {
             width: 150px;
         }
-        .title{
-            color: rgba($color: #000000, $alpha: .65);
+        .title {
+            color: rgba($color: #000000, $alpha: 0.65);
             font-weight: 400;
             font-size: 1.5em;
             margin-top: 40px;
             margin-bottom: 40px;
         }
-        .inputWrap{
+        .inputWrap {
             width: 368px;
-            form{
-                .login-form-button{ // 登录按钮
+            form {
+                .login-form-button {
+                    // 登录按钮
                     width: 100%;
                 }
-                .login-form-forgot, .ant-checkbox-wrapper{
+                .login-form-forgot,
+                .ant-checkbox-wrapper {
                     color: $mainColor;
                     cursor: pointer;
                 }
-                .login-form-forgot{
+                .login-form-forgot {
                     float: right;
                 }
             }

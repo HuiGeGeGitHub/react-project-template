@@ -1,23 +1,24 @@
-import React, { Component } from "react";
-import "./HeaderCustom.scss";
-import { Layout, Icon, Popover } from "antd";
-import { connect } from "react-redux";
+import React, { Component } from "react"
+import "./HeaderCustom.scss"
+import { Layout, Popover } from "antd"
+import { LogoutOutlined } from "@ant-design/icons"
+import { connect } from "react-redux"
 // import { StoreEditVideoState } from "../../redux/Login/reducer";
 
-const defaultIcon = require("./images/defaultuser.png");
+const defaultIcon = require("./images/defaultuser.png")
 function logout(props) {
-    props.history.replace("/login");
-    window.localStorage.removeItem("token");
+    props.history.replace("/login")
+    window.localStorage.removeItem("token")
 }
 function Content(props) {
     return (
         <ul className="customPopover">
             <li onClick={() => logout(props)}>
-                <Icon type="logout" />
+                <LogoutOutlined />
                 退出
             </li>
         </ul>
-    );
+    )
 }
 function HeaderBar(props) {
     return (
@@ -26,16 +27,16 @@ function HeaderBar(props) {
                 <Popover placement="bottom" content={Content(props)}>
                     <div className="userInfo">
                         <img src={defaultIcon} alt="用户头像" />
-                        <p>{props.user.account || '未设置名称'}</p>
+                        <p>{props.user.account || "未设置名称"}</p>
                     </div>
                 </Popover>
             </div>
         </Layout.Header>
-    );
+    )
 }
 
 export default connect((state: any /* { loginReducer: StoreEditVideoState } */) => {
     return {
-        user: {}
-    };
-})(HeaderBar);
+        user: {},
+    }
+})(HeaderBar)

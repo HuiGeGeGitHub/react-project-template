@@ -1,40 +1,31 @@
-@import '../../../common/mixin';
+@import "../../../common/mixin";
 $sideBarColor: #001529;
-.ant-layout-sider{
+.ant-layout-sider {
     position: "fixed";
     top: 0;
     left: 0;
     z-index: 5;
-    section.logo{
+    section.logo {
         width: 149px;
         height: 35px;
         margin: 14px auto 30px 24px;
-        background: url('./images/logo.png') center center/cover no-repeat;
-        &.collapsed{
+        background: url("./images/logo.png") center center/cover no-repeat;
+        &.collapsed {
             width: 40px;
             height: 35px;
             background-position: 0px;
         }
     }
-    .sideBar{
-        background-color: transparent;
+    .sideBar {
+        // background-color: transparent;
         border-right: none;
-        li{
-            a{
-                color: rgba(255, 255, 255, .65);
-            }
-        }
-        .ant-menu-item-selected{
-            background-color: $mainColor;
-            &::after{
-                display: none;
-            }
-            a{
-                color: #fff;
+        li {
+            a {
+                color: rgba(255, 255, 255, 0.65);
             }
         }
     }
-    .collapsedBtn{
+    .collapsedBtn {
         display: block;
         height: 65px;
         line-height: 65px;
@@ -42,17 +33,16 @@ $sideBarColor: #001529;
         top: 0;
         left: 100%;
         margin-left: 24px;
-        i{
+        i {
             font-size: 1.25em;
             cursor: pointer;
-            &:hover{
+            &:hover {
                 color: #333;
             }
         }
     }
 }
-section.ant-layout.contentWrap{
-    background-color: #F0F2F5;
+section.ant-layout.contentWrap {
     padding: 24px;
     margin-top: 65px;
     overflow-x: auto !important;

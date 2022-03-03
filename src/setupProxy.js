@@ -1,10 +1,11 @@
-const proxy = require('http-proxy-middleware');
+const { createProxyMiddleware } = require("http-proxy-middleware")
 
-module.exports = function(app) { // 本地代理
+module.exports = function (app) {
+    // 本地代理
     app.use(
-        proxy("/api", {
+        createProxyMiddleware("/api", {
             target: "http://192.168.0.44:6773/",
-            changeOrigin: true
+            changeOrigin: true,
         })
-    );
-};
+    )
+}
