@@ -12,10 +12,7 @@ class RouteConfig extends Component {
         return (
             <div className="App">
                 <Switch>
-                    <Route
-                        exact
-                        path="/"
-                        render={() => <Redirect to="/manage/solution" push />}></Route>
+                    <Route exact path="/" render={() => <Redirect to="/manage/solution" push />} />
                     <MainComp />
                     <Route component={NotFound}></Route>
                 </Switch>

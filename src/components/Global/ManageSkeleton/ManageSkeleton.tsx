@@ -1,7 +1,7 @@
 import React, { memo, useState } from "react"
 import { Layout, Menu } from "antd"
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { withRouter } from "react-router"
 import RouterConfig from "../../../router/config"
 import HeaderCustom from "../HeaderCustom/HeaderCustom"
@@ -32,9 +32,10 @@ type ItemType = {
     icon: string
     title: string
 }
-function SiderCustom(props) {
+function SiderCustom() {
+    let location = useLocation()
     return (
-        <Menu selectedKeys={[props.location.pathname]} mode="inline" className="sideBar">
+        <Menu selectedKeys={[location.pathname]} mode="inline" className="sideBar">
             {menus.map((item: any) => {
                 return item.children.map((i: ItemType) => (
                     <Menu.Item key={item.route + i.route}>
@@ -48,4 +49,4 @@ function SiderCustom(props) {
         </Menu>
     )
 }
-export default withRouter(ManageSkeleton)
+export default ManageSkeleton

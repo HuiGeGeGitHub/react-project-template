@@ -1,6 +1,7 @@
 import React, { Component } from "react"
-import { Provider } from "react-redux"
 import { ConfigProvider } from "antd"
+import { Provider } from "react-redux"
+import { BrowserRouter } from "react-router-dom"
 import { ConnectedRouter } from "connected-react-router"
 import { history } from "./redux/store"
 import RouteConfig from "./router/index"
@@ -13,9 +14,11 @@ class App extends Component {
         return (
             <ConfigProvider locale={zhCN}>
                 <Provider store={store}>
-                    <ConnectedRouter history={history}>
-                        <RouteConfig></RouteConfig>
-                    </ConnectedRouter>
+                    {/* <ConnectedRouter history={history}> */}
+                    <BrowserRouter>
+                        <RouteConfig />
+                    </BrowserRouter>
+                    {/* </ConnectedRouter> */}
                 </Provider>
             </ConfigProvider>
         )
